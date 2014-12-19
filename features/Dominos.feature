@@ -35,5 +35,9 @@ And I click on FutureCarryoutorder button
 And I click on Specialty Pizza
 And I click on order link
 And I click on Add to Order link
-
+Then I should be on the checkoutpage
+And I click on checkout button
+Then I should be on continuecheckoutpage
+And I click on continuecheckout button 
+Then I should be on Placeyourorderpage
 

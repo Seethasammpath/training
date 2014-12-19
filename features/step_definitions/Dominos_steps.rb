@@ -48,18 +48,40 @@ end
 When(/^I click on Specialty Pizza$/) do
 find('.navigation-Pizza').click
 end
+
 When(/^I click on order link$/) do
-first(:link, 'Order').click
+find(:xpath, '/html/body/div[3]/div[1]/div/div/section[1]/div/div[1]/a').click
 end
+
+#When(/^I close the Ad$/) do
+#find(:xpath, '/html/body/div[20]/div/a').click
+#end
+
 When(/^I click on Add to Order link$/) do
-#first("div[class='button']",:text =>"Add to Order").click
-#find(:link,'Add to Order').click
-find(:xpath, '/html/body/div[20]/div/a').click
-#click_button('Add to Order')
-#find(:xpath, '/html/body/div[20]/div/div[2]/div/div[2]/form/div[3]/button').click
-
-#find('Add to Order', visible: false).click
-#find(".btn js-isNew").click
-#find(".qa-Cl_order").click
-
+click_button('Add to Order')
 end
+  
+  Then(/^I should be on the checkoutpage$/) do
+	#expect(page).to have_title('Entrees | Specialty Pizza - Domino\'s Pizza, Order Pizza Online for Delivery - Dominos.com')
+#end
+
+
+Then(/^I click on checkout button$/) do
+find(:xpath, '/html/body/div[1]/div[1]/aside/div[1]/div/div[2]/div[1]/a').click
+  #click_button('checkout')
+end
+
+Then(/^I should be on continuecheckoutpage$/) do
+  #expect(page).to have_css('#myProfileInCheckout')
+  expect(page).to have_selector(:id, 'myProfileInCheckout')
+end
+
+Then(/^I click on continuecheckout button$/) do
+ click_button('continueCheckout')
+end
+
+Then(/^I should be on Placeyourorderpage$/) do
+expect(page).to have_selector(:id, 'orderPaymentPage')
+end
+
+
