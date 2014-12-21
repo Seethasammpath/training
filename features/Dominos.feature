@@ -39,5 +39,6 @@ Then I should be on the checkoutpage
 And I click on checkout button
 Then I should be on continuecheckoutpage
 And I click on continuecheckout button 
+Then I should be on the DonationsPage
+And I click close
 Then I should be on Placeyourorderpage
-

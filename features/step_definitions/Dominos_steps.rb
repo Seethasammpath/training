@@ -62,12 +62,12 @@ click_button('Add to Order')
 end
   
   Then(/^I should be on the checkoutpage$/) do
-	#expect(page).to have_title('Entrees | Specialty Pizza - Domino\'s Pizza, Order Pizza Online for Delivery - Dominos.com')
-#end
+	expect(page).to have_title('Entrees | Specialty Pizza - Domino\'s Pizza, Order Pizza Online for Delivery - Dominos.com')
+end
 
 
 Then(/^I click on checkout button$/) do
-find(:xpath, '/html/body/div[1]/div[1]/aside/div[1]/div/div[2]/div[1]/a').click
+find(:xpath, '/html/body/div[3]/div[1]/aside/div[1]/div/div[2]/div[1]/a/span').click
   #click_button('checkout')
 end
 
@@ -77,7 +77,8 @@ Then(/^I should be on continuecheckoutpage$/) do
 end
 
 Then(/^I click on continuecheckout button$/) do
- click_button('continueCheckout')
+	find(:xpath, '/html/body/div[3]/div[2]/div/div/div/aside/a').click
+ #click_button('continueCheckout')
 end
 
 Then(/^I should be on Placeyourorderpage$/) do
@@ -85,3 +86,10 @@ expect(page).to have_selector(:id, 'orderPaymentPage')
 end
 
 
+Then(/^I should be on the DonationsPage$/) do
+expect(page).to have_selector(:id, 'genericOverlay')
+end
+
+Then(/^I click close$/) do
+	find(:xpath, '/html/body/div[21]/div/a').click
+end
