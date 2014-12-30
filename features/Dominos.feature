@@ -4,9 +4,9 @@ We want to step through a simple scenario for training
 Background:
 When I visit the Dominos home page
 
-@ordermultiplepizzas
+@orderpizza
 
-Scenario:Ordering multiple pizza
+Scenario:Ordering pizza
 When I click on 'Order Online' link
 When I fill out Address Information form
 And I click on Search Location button
