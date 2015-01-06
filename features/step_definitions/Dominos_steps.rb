@@ -88,14 +88,6 @@ expect(page).to have_selector(:id, 'orderPaymentPage')
 end
 
 
-Then(/^I should be on the DonationsPage$/) do
-expect(page).to have_selector(:id, 'genericOverlay')
-end
-
-Then(/^I click close$/) do
-find(:xpath, '/html/body/div[21]/div/a').click
-end
-
 Then(/^check the price of the 'Italian Sausage & Pepper Trio' pizza$/) do
  expected = find(:xpath, '//table[@data-product-code=\'PASACPT\']//td[@class=\'price\']').native.text
 expect(expected).to eq('$9.99')
