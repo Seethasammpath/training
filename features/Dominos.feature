@@ -25,20 +25,42 @@ And I click on Search Location button
 And I click on FutureCarryoutorder button
 Then i should be on the Entrees page
 
-@ordermultiplepizzas
 
-Scenario:Ordering multiple pizza
+@ordermultiplepizzas
+Scenario:Ordering pizza
 When I click on 'Order Online' link
 When I fill out Address Information form
 And I click on Search Location button
 And I click on FutureCarryoutorder button
 And I click on Specialty Pizza
-And I click on order link
+And I click 'Italian Sausage & Pepper Trio' pizza
+And I click on Add to Order link
+And I click 'Spinach & Feta' Pizza
 And I click on Add to Order link
 Then I should be on the checkoutpage
 And I click on checkout button
 Then I should be on continuecheckoutpage
-And I click on continuecheckout button 
-Then I should be on the DonationsPage
-And I click close
-Then I should be on Placeyourorderpage
+
+
+@Verifyingcheckoutcart
+Scenario:Verifyingcart
+When I click on 'Order Online' link
+When I fill out Address Information form
+And I click on Search Location button
+And I click on FutureCarryoutorder button
+And I click on Specialty Pizza
+And I click 'Italian Sausage & Pepper Trio' pizza
+And I click on Add to Order link
+And I click 'Spinach & Feta' Pizza
+And I click on Add to Order link
+Then I should be on the checkoutpage
+And I click on checkout button
+Then I should be on continuecheckoutpage
+And check the price of the 'Italian Sausage & Pepper Trio' pizza 
+And check the quantity of the 'Italian Sausage & Pepper Trio' pizza 
+And check the price of the 'Spinach & Feta' pizza 
+And check the quantity of the 'Spinach & Feta' pizza 
+Then check the Order Total 
+
+
+

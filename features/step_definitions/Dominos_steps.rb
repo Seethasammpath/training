@@ -37,7 +37,7 @@ end
 #By default this will select store in first position
 And(/^I click on FutureCarryoutorder button$/) do
 	#first(:link, 'Order Carryout').click
-	find(:xpath, '/html/body/div[2]/div[1]/div/div/div[1]/div[2]/div[1]/div[2]/a').click
+	find(:xpath,'//div[@data-storeid=\'4317\']//a[@data-type=\'Carryout\']').click
 
 end
 
@@ -49,13 +49,15 @@ When(/^I click on Specialty Pizza$/) do
 find('.navigation-Pizza').click
 end
 
-When(/^I click on order link$/) do
-find(:xpath, '/html/body/div[3]/div[1]/div/div/section[1]/div/div[1]/a').click
+When(/^I click 'Italian Sausage & Pepper Trio' pizza$/) do
+find(:xpath, '//a[@class=\'btn media__btn none--handheld\' and @href=\'#/product/S_PIZPT/builder/\' and @data-clicked-element=\'button\']').click
 end
 
-#When(/^I close the Ad$/) do
-#find(:xpath, '/html/body/div[20]/div/a').click
-#end
+
+When(/^I click 'Spinach & Feta' Pizza$/) do
+ find(:xpath, '//a[@class=\'btn media__btn none--handheld\' and @href=\'#/product/S_PIZSE/builder/\' and @data-clicked-element=\'button\']').click
+end
+
 
 When(/^I click on Add to Order link$/) do
 click_button('Add to Order')
@@ -67,7 +69,7 @@ end
 
 
 Then(/^I click on checkout button$/) do
-find(:xpath, '/html/body/div[3]/div[1]/aside/div[1]/div/div[2]/div[1]/a/span').click
+click_link('Checkout')
   #click_button('checkout')
 end
 
@@ -77,7 +79,7 @@ Then(/^I should be on continuecheckoutpage$/) do
 end
 
 Then(/^I click on continuecheckout button$/) do
-	find(:xpath, '/html/body/div[3]/div[2]/div/div/div/aside/a').click
+	click_link('Continue Checkout')
  #click_button('continueCheckout')
 end
 
@@ -91,5 +93,30 @@ expect(page).to have_selector(:id, 'genericOverlay')
 end
 
 Then(/^I click close$/) do
-	find(:xpath, '/html/body/div[21]/div/a').click
+find(:xpath, '/html/body/div[21]/div/a').click
+end
+
+Then(/^check the price of the 'Italian Sausage & Pepper Trio' pizza$/) do
+ expected = find(:xpath, '//table[@data-product-code=\'PASACPT\']//td[@class=\'price\']').native.text
+expect(expected).to eq('$9.99')
+end
+
+
+Then(/^check the quantity of the 'Italian Sausage & Pepper Trio' pizza$/) do
+expected = find(:xpath, '//table[@data-product-code=\'PASACPT\']//option[@selected=\'\']').native.text
+expect(expected).to eq('1')
+end
+
+Then(/^check the price of the 'Spinach & Feta' pizza$/) do
+expected = find(:xpath, '//table[@data-product-code=\'PASACSE\']//td[@class=\'price\']').native.text
+expect(expected).to eq('$9.99')
+end
+
+Then(/^check the quantity of the 'Spinach & Feta' pizza$/) do
+expected = find(:xpath, '//table[@data-product-code=\'PASACSE\']//option[@selected=\'\']').native.text
+expect(expected).to eq('1')
+end
+Then(/^check the Order Total$/) do
+	expected = find(:xpath, '//td[@class=\'finalizedTotal js-total\']').native.text
+expect(expected).to eq('$21.68')
 end
